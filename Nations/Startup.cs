@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Nations.Models;
 
 namespace Nations
 {
@@ -28,10 +29,10 @@ namespace Nations
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //services.AddEntityFrameworkMySql()
-            //.AddDbContext<GummiBearKingdomContext>(
-            //    options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"])
-            //);
+            services.AddEntityFrameworkMySql()
+            .AddDbContext<ApplicationDbContext>(
+                options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"])
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

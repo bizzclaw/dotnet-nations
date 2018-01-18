@@ -5,6 +5,12 @@ namespace Nations.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Nation> Nations { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<GovernmentType> GovernmentTypes { get; set; }
+        public DbSet<GeographyType> GeographyTypes { get; set; }
+        public DbSet<EconomyType> EconomyTypes { get; set; }
+
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
